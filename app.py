@@ -55,22 +55,24 @@ def divide_players():
 		players = all_players[int(first_player_index): int((team_index + 1) * players_per_team)]
 		team_stats = {'Team Name': team, 'Players': players}
 		teams.append(team_stats)
+		team_index += 1
 	#print(teams)
 	
 
 # Display all team information
 def show_team_data():
-	divide_players()
-	print('\nPlease select a team >\n')
-	for index, item in enumerate(teams, start=1):
-		print('{}) {}'.format(index, item ['Team Name']))
-	team_choice = input()
-	if team_choice == '1':
-		print('\nTeam Name: Panthers\n')
-		print("*" * 20)
-		print(f"\nTotal players: {len(teams[int(team_choice) - 1]['Players'])}\n")
-		print(f"\nPlayers: {teams[int(team_choice) - 1]['Players']}\n")
-
+    divide_players()
+    print('\nPlease select a team >\n')
+    for index, item in enumerate(teams, start=1):
+        print('{}) {}'.format(index, item['Team Name']))
+    team_choice = input()
+    team = teams[int(team_choice) - 1]
+    print(f"\nTeam Name: {team['Team Name']}")
+    print("*" * 20)
+    print(f"\nTotal players: {len(team['Players'])}\n")
+    players = team['Players']
+    for player in players:
+        print(f"\n{player['Name']}")
 
 def main():
 	print('application started')
