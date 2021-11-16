@@ -26,6 +26,8 @@ def menu():
 		elif answer == '2':
 			continue_app = False
 			print ('See you next time')
+		else:
+			print('Please choose either "1" or "2"')
 	
 
 
@@ -61,18 +63,24 @@ def divide_players():
 
 # Display all team information
 def show_team_data():
-    divide_players()
-    print('\nPlease select a team >\n')
-    for index, item in enumerate(teams, start=1):
-        print('{}) {}'.format(index, item['Team Name']))
-    team_choice = input()
-    team = teams[int(team_choice) - 1]
-    print(f"\nTeam Name: {team['Team Name']}")
-    print("*" * 20)
-    print(f"\nTotal players: {len(team['Players'])}\n")
-    players = team['Players']
-    for player in players:
-        print(f"\n{player['Name']}")
+	divide_players()
+	print('\nPlease select a team >\n')
+	for index, item in enumerate(teams, start=1):
+		print('{}) {}'.format(index, item['Team Name']))
+	team_choice = input()
+	team = teams[int(team_choice) - 1]
+	print(f"\nTeam Name: {team['Team Name']}")
+	print("*" * 20)
+	print(f"\nTotal players: {len(team['Players'])}\n")
+	players = team['Players']
+	players_string = ''
+	index = 0
+	for player in players:
+		players_string += player['Name']
+		if index != len(players) -1:
+			players_string += ', '
+			index += 1
+	print(players_string)
 
 def main():
 	print('application started')
