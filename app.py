@@ -49,6 +49,7 @@ def clean_constants():
 
 #balance the teams
 def divide_players():
+	teams.clear()
 	num_players = len(all_players)
 	players_per_team = num_players / 3
 	team_index = 0
@@ -60,15 +61,24 @@ def divide_players():
 		team_index += 1
 	#print(teams)
 	
-
+1
 # Display all team information
 def show_team_data():
 	divide_players()
 	print('\nPlease select a team >\n')
 	for index, item in enumerate(teams, start=1):
 		print('{}) {}'.format(index, item['Team Name']))
-	team_choice = input()
-	team = teams[int(team_choice) - 1]
+	continue_team_data = True
+	while continue_team_data:
+		team_choice = input()
+		if team_choice.isnumeric():
+			if int(team_choice) in range(1, 3):
+				team = teams[int(team_choice) - 1]
+				continue_team_data = False
+			else:
+				print('Please choose either "1, 2, 3"')
+		else:
+			print('Please choose a valid number between 1-3')
 	print(f"\nTeam Name: {team['Team Name']}")
 	print("*" * 20)
 	print(f"\nTotal players: {len(team['Players'])}\n")
