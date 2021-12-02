@@ -72,7 +72,7 @@ def show_team_data():
 	while continue_team_data:
 		team_choice = input()
 		if team_choice.isnumeric():
-			if int(team_choice) in range(1, 3):
+			if int(team_choice) in range(1, 4):
 				team = teams[int(team_choice) - 1]
 				continue_team_data = False
 			else:
